@@ -56,8 +56,20 @@ type Prototype struct {
 	Code []uint32 // 指令表
 	Constants []interface{} // 常量表
 	Upvalues []Upvalue
-	Protos []*Prototype
-	LineInfo []uint32
-	LocVars []LocVar
+	Protos []*Prototype // 子函数表
+	LineInfo []uint32 // 行号表
+	LocVars []LocVar // 局部变量表
 	UpvalueNames []string
+}
+
+type Upvalue struct {
+	Instack byte
+	Idx byte
+}
+
+// 局部变量
+type LocVar struct {
+	VarName string
+	StartPC uint32
+	EndPC uint32
 }
