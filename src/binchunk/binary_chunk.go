@@ -14,6 +14,15 @@ const (
 	LUAC_NUM = 370.5
 )
 
+const (
+	TAG_NIL = 0x00
+	TAG_BOOLEAN = 0x01
+	TAG_NUMBER = 0x03
+	TAG_INTEGER = 0x13
+	TAG_SHORT_STR = 0x04
+	TAG_LONG_STR = 0x14
+}
+
 // 二进制chunk
 type binaryChunk struct {
 	header // 头部
@@ -44,8 +53,8 @@ type Prototype struct {
 	NumParams byte
 	IsVararg byte
 	MaxStackSize byte // 寄存器数量
-	Code []uint32
-	Constants []interface{}
+	Code []uint32 // 指令表
+	Constants []interface{} // 常量表
 	Upvalues []Upvalue
 	Protos []*Prototype
 	LineInfo []uint32
