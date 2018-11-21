@@ -14,12 +14,14 @@ const (
 	LUAC_NUM = 370.5
 )
 
+// 二进制chunk
 type binaryChunk struct {
 	header // 头部
 	upvaluesSize byte // 主函数upvalue数量
 	mainFunc *Prototype	// 主函数原型
 }
 
+// 头部
 type header struct {
 	signature [4]byte // 魔数 0x1B4C7561 魔数主要起快速识别文件格式的作用
 	version byte // 版本号
@@ -34,6 +36,19 @@ type header struct {
 	luacNum float64
 }
 
+// 函数原型
 type Prototype struct {
-
+	Source string
+	LineDefined uint32
+	LastLineDefined uint32
+	NumParams byte
+	IsVararg byte
+	MaxStackSize byte // 寄存器数量
+	Code []uint32
+	Constants []interface{}
+	Upvalues []Upvalue
+	Protos []*Prototype
+	LineInfo []uint32
+	LocVars []LocVar
+	UpvalueNames []string
 }
