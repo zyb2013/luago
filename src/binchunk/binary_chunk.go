@@ -21,7 +21,7 @@ const (
 	TAG_INTEGER = 0x13
 	TAG_SHORT_STR = 0x04
 	TAG_LONG_STR = 0x14
-}
+)
 
 // 二进制chunk
 type binaryChunk struct {
